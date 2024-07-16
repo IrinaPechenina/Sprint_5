@@ -1,14 +1,13 @@
 import random
-from selenium import webdriver
+import data
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from test_locators import TestLocators
 
 
 class TestConstructorSwitch:
-    def test_switch_constructor_div_success(self):
-        driver = webdriver.Chrome()
-        driver.get('https://stellarburgers.nomoreparties.site/register')
+    def test_switch_constructor_div_success(self, driver):
+        driver.get(data.REG_URL)
         driver.find_element(*TestLocators.NAME_FIELD).send_keys('Irina')  # "Имя"
         rand_email = f"irina_pechenina_8_{random.randint(100, 999)}@yandex.ru"  # "Email"
         driver.find_element(*TestLocators.EMAIL_FIELD).send_keys(rand_email)
@@ -25,11 +24,9 @@ class TestConstructorSwitch:
         driver.find_element(*TestLocators.CONSTRUCTOR_BUTTON_PERSONAL_ACCOUNT_PAGE).click()
         assert driver.find_element(*TestLocators.MAKE_BURGER).text == 'Соберите бургер'
         print('Вход в конструктор бургеров из личного кабинета по клику на Конструктор')
-        driver.quit()
 
-    def test_logo_button_switch_constructor_div_success(self):
-        driver = webdriver.Chrome()
-        driver.get('https://stellarburgers.nomoreparties.site/register')
+    def test_logo_button_switch_constructor_div_success(self, driver):
+        driver.get(data.REG_URL)
         driver.find_element(*TestLocators.NAME_FIELD).send_keys('Irina')  # "Имя"
         rand_email = f"irina_pechenina_8_{random.randint(100, 999)}@yandex.ru"  # "Email"
         driver.find_element(*TestLocators.EMAIL_FIELD).send_keys(rand_email)
@@ -46,4 +43,3 @@ class TestConstructorSwitch:
         driver.find_element(*TestLocators.LOGO_BUTTON_PERSONAL_ACCOUNT_PAGE).click()
         assert driver.find_element(*TestLocators.MAKE_BURGER).text == 'Соберите бургер'
         print('Вход в конструктор бургеров из личного кабинета по кнопке Stellar Burgers')
-        driver.quit()

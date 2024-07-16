@@ -1,14 +1,13 @@
 import random
-from selenium import webdriver
+import data
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from test_locators import TestLocators
 
 
 class TestLogOut:
-    def test_logout_from_personal_account_success(self):
-        driver = webdriver.Chrome()
-        driver.get('https://stellarburgers.nomoreparties.site/register')
+    def test_logout_from_personal_account_success(self, driver):
+        driver.get(data.REG_URL)
         driver.find_element(*TestLocators.NAME_FIELD).send_keys('Marina')  # "Имя"
         rand_email = f"marina_pechenina_8_{random.randint(100, 999)}@yandex.ru"  # "Email"
         driver.find_element(*TestLocators.EMAIL_FIELD).send_keys(rand_email)
@@ -32,4 +31,3 @@ class TestLogOut:
             expected_conditions.visibility_of_element_located(TestLocators.REGISTRATION_LINK))
         assert driver.find_element(*TestLocators.REGISTRATION_LINK).text == 'Зарегистрироваться'
         print('Произведен выход из личного кабинета')
-        driver.quit()

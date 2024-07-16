@@ -25,7 +25,7 @@ class TestLocators:
 
     # Переход из личного кабинета в конструктор
     CONSTRUCTOR_BUTTON_PERSONAL_ACCOUNT_PAGE = By.XPATH, './/p[text()="Конструктор"]'  # по клику на «Конструктор»
-    LOGO_BUTTON_PERSONAL_ACCOUNT_PAGE = By.XPATH, '//div[@class="AppHeader_header__logo__2D0X2"]'  # по клику на логотип
+    LOGO_BUTTON_PERSONAL_ACCOUNT_PAGE = By.XPATH, './/div[contains(@class, "AppHeader_header__logo")]'  # по клику на логотип
     # Stellar Burgers
     MAKE_BURGER = By.XPATH, './/h1[text()="Соберите бургер"]'  # заголовок раздела Конструктор
 
@@ -40,8 +40,3 @@ class TestLocators:
     FILLINGS_SECTION = By.XPATH, './/span[@class="text text_type_main-default" and text()="Начинки"]'  #
     # «Начинки»-раздел
     FILLINGS_HEADER = By.XPATH, './/h2[text()="Начинки"]'  # «Начинки»-заголовок
-
-
-
-
-

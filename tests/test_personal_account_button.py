@@ -1,4 +1,4 @@
-from selenium import webdriver
+import data
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from test_locators import TestLocators
@@ -6,9 +6,8 @@ from test_locators import TestLocators
 
 class TestPersonalAccount:
 
-    def test_switch_personal_account_success(self):
-        driver = webdriver.Chrome()
-        driver.get('https://stellarburgers.nomoreparties.site')
+    def test_switch_personal_account_success(self, driver):
+        driver.get(data.HOME_PAGE_URL)
         driver.find_element(*TestLocators.PERSONAL_ACCOUNT_BUTTON_MAIN_PAGE).click()
 
         # Ожидание загрузки страницы входа
@@ -17,4 +16,3 @@ class TestPersonalAccount:
 
         if driver.find_element(*TestLocators.ENTER_BUTTON):
             print('Работает переход по клику на «Личный кабинет»!')
-        driver.quit()
